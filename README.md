@@ -1,0 +1,2 @@
+# ledmac
+Typeset scholarly editions
