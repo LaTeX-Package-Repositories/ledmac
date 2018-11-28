@@ -7,7 +7,7 @@ https://www.ctan.org/pkg/ledmac
 
 https://www.ctan.org/pkg/ledpar
 
-https://www.ctan.org/pkg/ledmac
+https://www.ctan.org/pkg/ledarab
 
 
 
