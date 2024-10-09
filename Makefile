@@ -37,5 +37,5 @@ dist: $(PACKAGE)
 	zip -r ../ledmac.zip ledmac
 
 clean:
-	@$(RM) *.aux *.log *.out *.toc *tex *.pdf ledmac.sty ledarab.sty ledpar.sty afoot.sty *ind *ilg  *lof *idx *glo *gls ../ledmac.zip
+	@$(RM) *.aux *.log *.out *.toc *tex *.pdf ledmac.sty ledarab.sty ledpar.sty ledafoot.sty *ind *ilg  *lof *idx *glo *gls ../ledmac.zip
 
