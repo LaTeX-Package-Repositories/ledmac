@@ -138,3 +138,5 @@ is similar.
 Maïeul Rouquette
 maieul at maieul dot net
 
+2024/10/09
+David Carlisle https://github.com/LaTeX-Package-Repositories/ledmac
