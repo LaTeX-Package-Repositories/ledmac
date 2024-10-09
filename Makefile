@@ -4,7 +4,7 @@ PACKAGE = *.dtx \
 		  ledarab.pdf \
 		  ledpar.pdf \
 		  *eps \
-		  README \
+		  README.md \
 		  Makefile
 
 
@@ -35,7 +35,6 @@ dist: $(PACKAGE)
 	mkdir ledmac
 	ln $(PACKAGE) ledmac
 	zip -r ../ledmac.zip ledmac
-	
 
 clean:
 	@$(RM) *.aux *.log *.out *.toc *tex *.pdf ledmac.sty ledarab.sty ledpar.sty afoot.sty *ind *ilg  *lof *idx *glo *gls ../ledmac.zip

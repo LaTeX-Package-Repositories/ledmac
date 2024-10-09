@@ -2,7 +2,6 @@
 %
 % ledarab.dtx
 % Author: Peter Wilson (Herries Press) herries dot press at earthlink dot net 
-% Maintainer:Maïeul Rouquette maieul at maieul dot net
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either
@@ -60,7 +59,7 @@
 %
 % \fi
 %
-% \CheckSum{821}
+% \CheckSum{829}
 %
 % \makeatletter
 % \newcommand*{\DescribeIt}{\leavevmode\@bsphack\begingroup\MakePrivateLetters
@@ -125,10 +124,11 @@
 % \DoNotIndex{\newcommand}
 %
 % \newcommand{\dtxfilename}{\texttt{ledarab.dtx}}
-% \def\fileversion{v0.1} \def\filedate{2005/03/24}
+% \def\fileversion{v0.2} \def\filedate{2024/10/09}
 %
 % \changes{v0.1}{2005/03/24}{First public release}
 % \changes{v0.1}{2011/17/06}{Ma\"ieul Rouquette new maintainer}
+% \changes{v0.2}{2024/10/09}{Rename afoot package to ledafoot}
 % \hyphenation{man-u-script man-u-scripts}
 %
 % \newcommand{\Lpack}[1]{\textsf{#1}}
@@ -144,7 +144,7 @@
 % \newcommand{\edstanza}{\texttt{EDSTANZA}}
 % \newcommand{\ArabTeX}{\texttt{ArabTeX}}
 % \newcommand{\Larabtex}{\Lpack{arabtex}}
-% \newcommand{\Lafoot}{\Lpack{afoot}}
+% \newcommand{\Lafoot}{\Lpack{ledafoot}}
 % \newcommand{\Lledarab}{\Lpack{ledarab}}
 % \newcommand{\PWcomment}[1]{}
 % \newenvironment{PW}{\itshape}{}
@@ -168,12 +168,13 @@
 %    \end{minipage}\par\endgroup}
 %
 % \title{Critical editions and arabic typesetting: \\
-%       the \Lpack{ledarab} and \Lpack{afoot} packages\thanks{This file (\dtxfilename)
+%       the \Lpack{ledarab} and \Lpack{ledafoot} packages\thanks{This file (\dtxfilename)
 % has version number \fileversion, last revised \filedate.}}
 % \author{%
 % Peter Wilson \\
 % Herries Press\thanks{\texttt{herries dot press at earthlink dot net}}\\
-% Ma\"ieul Rouquette\thanks{\texttt{maieul at maieul dot net}}
+% Ma\"ieul Rouquette\thanks{\texttt{maieul at maieul dot net}}%
+% \thanks{\texttt{afoot} package renamed to \texttt{ledafoot} by David Carlisle}
 %}
 %
 % \date{}
@@ -229,13 +230,13 @@
 % version\footnote{I made queries about this on the \texttt{comp.text.tex} 
 % newsgoup on 2005/01/06 but got no responses.} 
 % of \file{afoot.sty} is provided in the \ArabTeX{} distribution.
+
 %
-% \section{The \Lpack{afoot} package}\label{howto}
+% \section{The \Lpack{ledafoot} package}\label{howto}
 %
-% The \Larabtex{} package automatically calls the \Lafoot{} package. If you
-% want to use my version of \Lafoot{} just make sure that it is found by
-% LaTeX before the \ArabTeX's version, for example by having a copy in 
-% your working directory.
+% The \Larabtex{} package automatically calls the \Lpack{afoot} package. If you
+% want to use my version of just load \Lafoot{} before loading  \Larabtex{},
+% and this code will be substuted.
 %
 % \DescribeMacro{\footnote}
 % The \cs{footnote}\marg{text} produces a numbered footnote. Unlike
@@ -446,7 +447,7 @@
 %
 % \StopEventually{}
 %
-% \section{The \Lpack{afoot} implementation}
+% \section{The \Lpack{ledafoot} implementation}
 % \label{afootimpl}
 %
 % The \Lafoot{} package is effectively an extraction from
@@ -455,11 +456,12 @@
 % Announce the name and version of the package, which is 
 % targetted for LaTeX2e.
 %
+% Suppress \Lpack{afoot} package.
 %    \begin{macrocode}
 %<*afoot>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{afoot}[2005/03/24 v0.1 PW's version of ArabTeX's afoot.sty]
-
+\expandafter\let\csname ver@afoot.sty\expandafter\csname\csname ver@ledafoot.sty\endcsname
 %    \end{macrocode}
 %
 % The package redefines the internals of the LaTeX \cs{footnote} macro
@@ -471,6 +473,8 @@
 % I don't know why this is here as it is also defined as part of the
 % \cs{@footnotetext} macro below.
 %    \begin{macrocode}
+\AtBeginDocument{
+
 \ifx \footglue \undefined % normal case
 \else                   % fnpara.sty is present
   \long\def\@makefntext#1{{$^{\@thefnmark}$}#1\nobreak }
@@ -683,7 +687,7 @@
 % Make \cs{LRfootnotes} the default.
 %    \begin{macrocode}
 \LRfootnotes
-
+}
 %    \end{macrocode}
 %
 % The end of the package
