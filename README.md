@@ -3,7 +3,7 @@ LaTeX port, and extension, of the plain TeX EDMAC, TABMAC and EDSTANZA
 macros. The ledpar package is an extension of ledmac enabling parallel
 typesetting in columns or on facing pages. The ledarab package is
 an extension enabling the use of arabic script, as implemented by ArabTeX, 
-in critical editions (temporarily afoot.sty is provided to support regular 
+in critical editions (temporarily ledafoot.sty is provided to support regular 
 footnotes in ArabTeX).
 
 These 3 packages are deprecated :
@@ -82,7 +82,7 @@ and the derived files
    ledarab.sty
    egarab.tex
    egarabpar.tex
-   afoot.sty
+   ledafoot.sty
 
 -------------------------------------------------------------------- 
 
